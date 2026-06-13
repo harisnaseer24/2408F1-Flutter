@@ -1,0 +1,14 @@
+FLUTTER SETUP & INSTALLATION:
+
+Flutter sdk
+Android studio
+dart & flutter plugin
+android tools
+install certificates
+vs code extensions
+
+
+commands to check:
+flutter doctor
+
+flutte create myapp

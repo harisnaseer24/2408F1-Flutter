@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+
+class ProductDetails extends StatefulWidget {
+  const ProductDetails({Key? key}) : super(key: key);
+
+  @override
+  _ProductDetailsState createState() => _ProductDetailsState();
+}
+
+class _ProductDetailsState extends State<ProductDetails> {
+
+var product ={
+  "name":"HP 250R G9 Notebook PC",
+  'price': 'Rs. 105,000.00',
+  'description': 'HP 250R G9 Notebook PC - Raptor Lake - 13th Gen Core i3 1315U Processor 8-GB 512-GB SSD Intel UHD Graphics 15.6" Full HD 1080P 250nits AG DIsplay W11 Pro (Grey, Open Box)',
+  'image':'data:image/jpeg;base64,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'
+};
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Product Details',
+          style: TextStyle(fontSize: 30, color: Colors.white),
+        ),
+        backgroundColor: Colors.deepPurple,
+      ),
+      body: Center(
+        child: Container(
+          child: Column(
+            children: [
+              Image.network(product["image"].toString(),
+              height:255,
+              width: double.infinity,
+              fit:BoxFit.cover,
+              ),
+SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                
+                
+                children: [
+                Text(product["name"].toString(),style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                 Text(product["price"].toString(),style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, decoration:TextDecoration.underline ))]),
+
+SizedBox(height: 25,),
+
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal:50),
+                child: Text(product["description"].toString()),
+              ),
+
+              SizedBox(height: 25,),
+              Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                ElevatedButton(onPressed: (){}, child: Text('Buy Now') ),
+                ElevatedButton(onPressed: (){}, child: Text('Add to Cart') ),
+            ]),
+          ]),
+        ),
+      ),
+      drawer: Drawer(child: Text('Drawer')),
+    );
+  }
+}

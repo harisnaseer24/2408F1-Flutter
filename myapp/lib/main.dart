@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screens/layout.dart';
+import 'package:myapp/screens/listView.dart';
+import 'package:myapp/screens/listviewbuilder.dart';
 import 'package:myapp/screens/productDetails.dart';
 
 void main() {
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
   
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: ProductDetails(),
+      home: ProductList(),
       // routes:{
       //   '/productDetails':(context)=>ProductDetails()
       // }

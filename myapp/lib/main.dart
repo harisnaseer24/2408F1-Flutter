@@ -3,6 +3,8 @@ import 'package:myapp/screens/layout.dart';
 import 'package:myapp/screens/listView.dart';
 import 'package:myapp/screens/listviewbuilder.dart';
 import 'package:myapp/screens/productDetails.dart';
+import 'package:myapp/screens/signup.dart';
+import 'package:myapp/screens/userDetails.dart';
 
 void main() {
   runApp( MyApp());
@@ -21,7 +23,14 @@ class MyApp extends StatelessWidget {
   
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: ProductList(),
+      home: Signup(),
+      
+      routes: {
+      
+        "/listview": (context) => Layout2(),
+        "/products": (context) => ProductList(),
+        "/productdetails": (context) => ProductDetails(),
+      }
       // routes:{
       //   '/productDetails':(context)=>ProductDetails()
       // }

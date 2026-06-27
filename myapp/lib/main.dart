@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/screens/extras.dart';
 import 'package:myapp/screens/layout.dart';
 import 'package:myapp/screens/listView.dart';
 import 'package:myapp/screens/listviewbuilder.dart';
@@ -23,11 +24,12 @@ class MyApp extends StatelessWidget {
   
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Signup(),
+      home: Extras(),
       
       routes: {
       
         "/listview": (context) => Layout2(),
+        "/signup": (context) => Signup(),
         "/products": (context) => ProductList(),
         "/productdetails": (context) => ProductDetails(),
       }

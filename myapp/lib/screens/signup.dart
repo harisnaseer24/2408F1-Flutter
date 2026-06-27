@@ -49,7 +49,7 @@ void Register(){
                 validator: (value) {
                   if (value!.isEmpty) {
                               return ("Username is required");
-                            } cd
+                            } 
                             return null;
                   
                 },

@@ -10,7 +10,7 @@ class Billform extends StatefulWidget {
 
 class _BillformState extends State<Billform> {
 
-  var billDetails={};
+ 
 final GlobalKey<FormState> myformkey = GlobalKey<FormState>();
 TextEditingController unitsController = TextEditingController();
 TextEditingController priceController = TextEditingController();
@@ -35,12 +35,7 @@ setState(() {
 });
 print(finalBillAmount);
 
-
-
-
-
-
-  billDetails = {
+ var billDetails = {
         'units': unit,
         'pricePerUnit': price,
         'taxPercent': taxPercent,

@@ -26,7 +26,11 @@ class MyApp extends StatelessWidget {
       
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Addproduct() ,
+      home: Products() ,
+      routes:{
+        "/products":(context)=>Products(),
+        "/addproduct":(context)=>Addproduct(),
+      }
     );
   }
 }

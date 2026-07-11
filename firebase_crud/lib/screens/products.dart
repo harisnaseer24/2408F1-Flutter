@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +20,14 @@ class _ProductsState extends State<Products> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Products"),
+        actions:[
+          IconButton(
+            onPressed: (){
+              Navigator.pushNamed(context, "/addproduct");
+            },
+             icon: Icon(Icons.add)
+             )
+        ]
       ),
       body: Center(
         child:  StreamBuilder<QuerySnapshot>(
@@ -43,6 +53,9 @@ class _ProductsState extends State<Products> {
                             return ListTile(
                               title: Text(product['title']),
                               subtitle: Text('Price: \$${product['price']}'),
+                              leading: CircleAvatar(
+                                child: Image.memory(base64Decode(product['image']),height: 40,width: 40,fit: BoxFit.cover),
+                              ),
 
 
                             );

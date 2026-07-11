@@ -28,7 +28,63 @@ getImage()async{
 // Pick an image.
 final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 
+// image -> file -> bytes array -> base64 string -> database
+
+// [345,45,345,3453,4534,345,45,5454]
+final Uint8List byteImage=await image!.readAsBytes();
+
+//image--> [12,121,25454,2187,88785,854577,4,4,878,45,4,.....]
+
+print(byteImage);
+//base 64 algorithm
+final String base64img=base64Encode(byteImage);
+print(base64img);
+setState(() {
+  imgUrl=base64img;
+});
+
+
 }
+
+
+
+
+addProduct()async {
+
+var product= {
+  
+  "title":titleController.text,
+  "description":desController.text,
+  "price":priceController.text,
+  "stock":stockController.text,
+  "image":imgUrl
+};
+
+await products.add(product).then((value){
+  print("Product added successfully");
+
+   titleController.clear();
+                    desController.clear();
+                    priceController.clear();
+                    stockController.clear();
+                   
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: 
+                    Text("Product added successfully..✔",style: TextStyle(color: Colors.white),), backgroundColor: Colors.purple,));
+
+                    Navigator.pop(context);
+                  }).catchError((error) => {
+                    print("Failed to add product: $error"),
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to add product"),))
+                  });
+
+}
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +140,7 @@ final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 
                         ElevatedButton(
                 onPressed: () {
-               
+               addProduct();
                 },
                 child: Text("Add product"),
               ),

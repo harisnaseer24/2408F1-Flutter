@@ -42,12 +42,7 @@ print(base64img);
 setState(() {
   imgUrl=base64img;
 });
-
-
 }
-
-
-
 
 addProduct()async {
 
@@ -73,6 +68,7 @@ await products.add(product).then((value){
                     Text("Product added successfully..✔",style: TextStyle(color: Colors.white),), backgroundColor: Colors.purple,));
 
                     Navigator.pop(context);
+                    
                   }).catchError((error) => {
                     print("Failed to add product: $error"),
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to add product"),))

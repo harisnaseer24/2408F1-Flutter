@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Products() ,
       routes:{
-        "/products":(context)=>Products(),
+      
         "/addproduct":(context)=>Addproduct(),
       }
     );

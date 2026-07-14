@@ -56,6 +56,27 @@ class _ProductsState extends State<Products> {
                               leading: CircleAvatar(
                                 child: Image.memory(base64Decode(product['image']),height: 40,width: 40,fit: BoxFit.cover),
                               ),
+                              trailing: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                IconButton(
+                                icon: Icon(Icons.delete),
+                                onPressed:  ()async {
+                                await  products.doc(product.id).delete();
+                                },
+                              ),
+
+
+IconButton(
+                                icon: Icon(Icons.edit),
+                                onPressed: () {
+                            
+                                },
+                              ),
+
+                              ],)
+
+
 
 
                             );

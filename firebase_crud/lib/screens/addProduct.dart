@@ -33,7 +33,7 @@ final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 // [345,45,345,3453,4534,345,45,5454]
 final Uint8List byteImage=await image!.readAsBytes();
 
-//image--> [12,121,25454,2187,88785,854577,4,4,878,45,4,.....]
+//image--> [12,121,25454,2187,88785,854,577,4,4,878,45,4,.....]
 
 print(byteImage);
 //base 64 algorithm

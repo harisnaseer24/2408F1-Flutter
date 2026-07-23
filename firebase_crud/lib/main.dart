@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crud/firebase_options.dart';
 import 'package:firebase_crud/screens/addProduct.dart';
+import 'package:firebase_crud/screens/login.dart';
 import 'package:firebase_crud/screens/products.dart';
 import 'package:firebase_crud/screens/signup.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       
         "/products":(context)=>Products(),
         "/addproduct":(context)=>Addproduct(),
+        "/login":(context)=>Login(),
       }
     );
   }

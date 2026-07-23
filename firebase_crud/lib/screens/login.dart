@@ -3,16 +3,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // import 'package:introduction/components/myDrawer.dart';
 
-class Signup extends StatefulWidget {
-  const Signup({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  _SignupState createState() => _SignupState();
+  _LoginState createState() => _LoginState();
 }
 
-class _SignupState extends State<Signup> {
-  final GlobalKey<FormState> _signupKey = GlobalKey<FormState>(); // unique key
-  TextEditingController userNameController = TextEditingController();
+class _LoginState extends State<Login> {
+  final GlobalKey<FormState> _loginKey = GlobalKey<FormState>(); // unique key
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
@@ -21,11 +21,11 @@ class _SignupState extends State<Signup> {
 
   var users = FirebaseFirestore.instance.collection("users");
 
-  void RegisterUser() async {
-    if (_signupKey.currentState!.validate()) {
+  void LoginUser() async {
+    if (_loginKey.currentState!.validate()) {
 
 try {
-  final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+  final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
     email: emailController.text,
     password: passController.text,
 
@@ -36,31 +36,23 @@ try {
 
 // adding user details in user collection too
    // Add the product to the database
-                  users.doc(credential.user!.uid).set({
-                    'email':emailController.text,
-                    'password':passController.text,
-                    'username':userNameController.text,
-                    'role':"user"
-
-                  }).then((value) => {
-                    emailController.clear(),
-                    passController.clear(),
-                    userNameController.clear(),
+                
+                    emailController.clear();
+                    passController.clear();
+                
                    
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: 
-                    Text("Registeration Successfull..✔ Please login now",style: TextStyle(color: Colors.white),), backgroundColor: const Color.fromARGB(255, 43, 62, 188),)) ,
+                    Text("Login Successfull..✔ ",style: TextStyle(color: Colors.white),), backgroundColor: const Color.fromARGB(255, 43, 62, 188),)) ;
 
-                    Navigator.pushNamed(context,"/login"),
-                  }).catchError((error) => {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to register user"),))
-                  });
+                    Navigator.pushNamed(context,"/products");
+                 
 
 } on FirebaseAuthException catch (e) {
-  if (e.code == 'weak-password') {
-    print('The password provided is too weak.');
-  } else if (e.code == 'email-already-in-use') {
-    print('The account already exists for that email.');
+ if (e.code == 'user-not-found') {
+    print('No user found for that email.');
+  } else if (e.code == 'wrong-password') {
+    print('Wrong password provided for that user.');
   }
 } catch (e) {
   print(e);
@@ -86,7 +78,7 @@ try {
               child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Form(
-                    key: _signupKey,
+                    key: _loginKey,
                     child: Column(
                       children: [
                         SizedBox(
@@ -103,21 +95,7 @@ try {
                         SizedBox(
                           height: 20,
                         ),
-                        TextFormField(
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return ("Username is required");
-                            }
-                            return null;
-                          },
-                          controller: userNameController,
-                          decoration: InputDecoration(
-                              labelText: "Username",
-                              prefixIcon: Icon(Icons.person),
-                              border: OutlineInputBorder(),
-                              suffixIcon: Icon(Icons.person_2),
-                              hintText: "enter username"),
-                        ),
+                    
                         // email
                         SizedBox(
                           height: 20,
@@ -173,12 +151,12 @@ try {
                         ),
                         // submit button
                         ElevatedButton(
-                            onPressed: RegisterUser, child: Text("Sign up"))
+                            onPressed: LoginUser, child: Text("Login in"))
 
 
                             , TextButton(onPressed: (){
-                              Navigator.pushNamed(context, "/login");
-                            }, child: Text("Already have an account? Login now"))
+                              Navigator.pushNamed(context, "/signup");
+                            }, child: Text("Not a user? Register now"))
                         // TextField()
                       ],
                     ),
